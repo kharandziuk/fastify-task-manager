@@ -2,6 +2,37 @@
 # yarn lockfile v1
 
 
+"@hapi/address@2.x.x":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.0.0.tgz#9f05469c88cb2fd3dcd624776b54ee95c312126a"
+
+"@hapi/hoek@6.x.x", "@hapi/hoek@^6.2.1":
+  version "6.2.4"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-6.2.4.tgz#4b95fbaccbfba90185690890bdf1a2fbbda10595"
+
+"@hapi/hoek@8.x.x":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-8.0.2.tgz#f63a5ff00e891a4e7aa98f11119f9515c6672032"
+
+"@hapi/joi@^15.0.0", "@hapi/joi@^15.1.0":
+  version "15.1.0"
+  resolved "https://registry.yarnpkg.com/@hapi/joi/-/joi-15.1.0.tgz#940cb749b5c55c26ab3b34ce362e82b6162c8e7a"
+  dependencies:
+    "@hapi/address" "2.x.x"
+    "@hapi/hoek" "6.x.x"
+    "@hapi/marker" "1.x.x"
+    "@hapi/topo" "3.x.x"
+
+"@hapi/marker@1.x.x":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@hapi/marker/-/marker-1.0.0.tgz#65b0b2b01d1be06304886ce9b4b77b1bfb21a769"
+
+"@hapi/topo@3.x.x":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@hapi/topo/-/topo-3.1.2.tgz#57cc1317be1a8c5f47c124f9b0e3c49cd78424d2"
+  dependencies:
+    "@hapi/hoek" "8.x.x"
+
 "@types/jsonwebtoken@^8.3.2":
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/@types/jsonwebtoken/-/jsonwebtoken-8.3.2.tgz#e3d5245197152346fae7ee87d5541aa5a92d0362"
@@ -57,6 +88,12 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+async@2.6.2:
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/async/-/async-2.6.2.tgz#18330ea7e6e313887f5d2f2a904bac6fe4dd5381"
+  dependencies:
+    lodash "^4.17.11"
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -73,6 +110,10 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
+bluebird@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.1.tgz#d9551f9de98f1fcda1e683d17ee91a0602ee2eb9"
+
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -83,6 +124,10 @@ brace-expansion@^1.1.7:
 browser-stdout@1.3.1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/browser-stdout/-/browser-stdout-1.3.1.tgz#baa559ee14ced73452229bad7326467c61fabd60"
+
+bson@^1.1.1, bson@~1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/bson/-/bson-1.1.1.tgz#4330f5e99104c4e751e7351859e2d408279f2f13"
 
 buffer-equal-constant-time@1.0.1:
   version "1.0.1"
@@ -153,6 +198,12 @@ cross-spawn@^6.0.0:
     semver "^5.5.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
+
+debug@3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  dependencies:
+    ms "2.0.0"
 
 debug@3.2.6, debug@^3.1.0:
   version "3.2.6"
@@ -509,6 +560,13 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
+joigoose@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/joigoose/-/joigoose-4.0.8.tgz#5fc14194ec9d01ec9cf7d70efe294a6970ae36df"
+  dependencies:
+    "@hapi/hoek" "^6.2.1"
+    "@hapi/joi" "^15.0.0"
+
 js-yaml@3.13.1:
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
@@ -549,6 +607,10 @@ jws@^3.2.2:
   dependencies:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
+
+kareem@2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/kareem/-/kareem-2.3.0.tgz#ef33c42e9024dce511eeaf440cd684f3af1fc769"
 
 lcid@^2.0.0:
   version "2.0.0"
@@ -621,6 +683,10 @@ mem@^4.0.0:
     map-age-cleaner "^0.1.1"
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
+
+memory-pager@^1.0.2:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/memory-pager/-/memory-pager-1.5.0.tgz#d8751655d22d384682741c972f2c3d6dfa3e66b5"
 
 methods@^1.1.1, methods@^1.1.2:
   version "1.1.2"
@@ -695,11 +761,68 @@ mocha@^6.1.4:
     yargs-parser "13.0.0"
     yargs-unparser "1.5.0"
 
+mongodb-core@3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/mongodb-core/-/mongodb-core-3.2.7.tgz#a8ef1fe764a192c979252dacbc600dc88d77e28f"
+  dependencies:
+    bson "^1.1.1"
+    require_optional "^1.0.1"
+    safe-buffer "^5.1.2"
+  optionalDependencies:
+    saslprep "^1.0.0"
+
+mongodb@3.2.7:
+  version "3.2.7"
+  resolved "https://registry.yarnpkg.com/mongodb/-/mongodb-3.2.7.tgz#8ba149e4be708257cad0dea72aebb2bbb311a7ac"
+  dependencies:
+    mongodb-core "3.2.7"
+    safe-buffer "^5.1.2"
+
+mongoose-legacy-pluralize@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
+
+mongoose@^5.6.4:
+  version "5.6.4"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.6.4.tgz#049ca8ad5ac16a528c23a20301579f7ac92fdb0e"
+  dependencies:
+    async "2.6.2"
+    bson "~1.1.1"
+    kareem "2.3.0"
+    mongodb "3.2.7"
+    mongodb-core "3.2.7"
+    mongoose-legacy-pluralize "1.0.2"
+    mpath "0.6.0"
+    mquery "3.2.1"
+    ms "2.1.2"
+    regexp-clone "1.0.0"
+    safe-buffer "5.1.2"
+    sift "7.0.1"
+    sliced "1.0.1"
+
+mpath@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/mpath/-/mpath-0.6.0.tgz#aa922029fca4f0f641f360e74c5c1b6a4c47078e"
+
+mquery@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/mquery/-/mquery-3.2.1.tgz#8b059a49cdae0a8a9e804284ef64c2f58d3ac05d"
+  dependencies:
+    bluebird "3.5.1"
+    debug "3.1.0"
+    regexp-clone "^1.0.0"
+    safe-buffer "5.1.2"
+    sliced "1.0.1"
+
+ms@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
 ms@2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
 
-ms@^2.1.1:
+ms@2.1.2, ms@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
 
@@ -867,6 +990,10 @@ readable-stream@^3.1.1:
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
 
+regexp-clone@1.0.0, regexp-clone@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/regexp-clone/-/regexp-clone-1.0.0.tgz#222db967623277056260b992626354a04ce9bf63"
+
 require-directory@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/require-directory/-/require-directory-2.1.1.tgz#8c64ad5fd30dab1c976e2344ffe7f792a6a6df42"
@@ -878,6 +1005,17 @@ require-main-filename@^1.0.1:
 require-main-filename@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-2.0.0.tgz#d0b329ecc7cc0f61649f62215be69af54aa8989b"
+
+require_optional@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/require_optional/-/require_optional-1.0.1.tgz#4cf35a4247f64ca3df8c2ef208cc494b1ca8fc2e"
+  dependencies:
+    resolve-from "^2.0.0"
+    semver "^5.1.0"
+
+resolve-from@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-2.0.0.tgz#9480ab20e94ffa1d9e80a804c7ea147611966b57"
 
 ret@~0.2.0:
   version "0.2.2"
@@ -891,19 +1029,25 @@ rfdc@^1.1.2:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/rfdc/-/rfdc-1.1.4.tgz#ba72cc1367a0ccd9cf81a870b3b58bd3ad07f8c2"
 
-safe-buffer@^5.0.1:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
-
-safe-buffer@~5.1.0, safe-buffer@~5.1.1:
+safe-buffer@5.1.2, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.1.2.tgz#991ec69d296e0313747d59bdfd2b745c35f8828d"
+
+safe-buffer@^5.0.1, safe-buffer@^5.1.2:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/safe-buffer/-/safe-buffer-5.2.0.tgz#b74daec49b1148f88c64b68d49b1e815c1f2f519"
 
 safe-regex2@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/safe-regex2/-/safe-regex2-2.0.0.tgz#b287524c397c7a2994470367e0185e1916b1f5b9"
   dependencies:
     ret "~0.2.0"
+
+saslprep@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/saslprep/-/saslprep-1.0.3.tgz#4c02f946b56cf54297e347ba1093e7acac4cf226"
+  dependencies:
+    sparse-bitfield "^3.0.3"
 
 secure-json-parse@^1.0.0:
   version "1.0.0"
@@ -913,7 +1057,7 @@ semver-store@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/semver-store/-/semver-store-0.3.0.tgz#ce602ff07df37080ec9f4fb40b29576547befbe9"
 
-semver@^5.5.0, semver@^5.6.0, semver@^5.7.0:
+semver@^5.1.0, semver@^5.5.0, semver@^5.6.0, semver@^5.7.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
 
@@ -939,15 +1083,29 @@ shebang-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
 
+sift@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/sift/-/sift-7.0.1.tgz#47d62c50b159d316f1372f8b53f9c10cd21a4b08"
+
 signal-exit@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
+
+sliced@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sliced/-/sliced-1.0.1.tgz#0b3a662b5d04c3177b1926bea82b03f837a2ef41"
 
 sonic-boom@^0.7.3:
   version "0.7.4"
   resolved "https://registry.yarnpkg.com/sonic-boom/-/sonic-boom-0.7.4.tgz#dc1740a900cf8646471f6ac1f4933a5c66c0ca60"
   dependencies:
     flatstr "^1.0.9"
+
+sparse-bitfield@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/sparse-bitfield/-/sparse-bitfield-3.0.3.tgz#ff4ae6e68656056ba4b3e792ab3334d38273ca11"
+  dependencies:
+    memory-pager "^1.0.2"
 
 sprintf-js@~1.0.2:
   version "1.0.3"
