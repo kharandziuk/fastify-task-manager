@@ -9,6 +9,7 @@ const joigoose = require('joigoose')(mongoose);
 const joiUserSchema = Joi.object({
   name: Joi.string().alphanum().min(6).max(16).required().meta({ unique: true }),
   email: Joi.string().email().required(),
+  // FIXME: we should store password in an encrypted way
   password: Joi.string().min(6).max(16).required()
 });
 
@@ -35,6 +36,18 @@ const userController = async (fastify, { db }) => {
     }
   )
 
+  fastify.post('/login', async (req, reply) => {
+    const { username, password } = req.body
+    const user = await db.models.User.findOne({name: username, password })
+    if (user) {
+      const token = fastify.jwt.sign({ id: user._id })
+      return { token }
+    } else {
+      reply.code(401)
+      reply.send({ error: 'invalid username or password' })
+    }
+  })
+
   return fastify
 }
 
@@ -56,10 +69,6 @@ async function dbConnector() {
 
 function buildFastify ({secret, db}) {
   const fastify = Fastify()
-
-  fastify.register(require('fastify-jwt'), { secret })
-  fastify.register(userController, { db })
-
   fastify.decorate("authenticate", async function(request, reply) {
     await request.jwtVerify()
   })
@@ -71,15 +80,8 @@ function buildFastify ({secret, db}) {
         }
   )
 
-  fastify.post('/login', async (req, reply) => {
-    const { username, password }  = req.body
-      if(username === 'username' && password === 'password') {
-        const token = fastify.jwt.sign({ id: 'ID' })
-        return { token }
-      } else {
-        throw { statusCode: 401, error: 'invalid username or password' }
-      }
-  })
+  fastify.register(require('fastify-jwt'), { secret })
+  fastify.register(userController, { db })
 
 
   fastify.get('/', function (request, reply) {
@@ -95,7 +97,6 @@ function buildFastify ({secret, db}) {
       return { message: 'some personal data' }
     }
   )
-
 
   return fastify
 }

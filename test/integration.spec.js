@@ -19,9 +19,7 @@ describe('server', () => {
   before(async () => {
     db = await dbConnector()
   })
-  after(() => {
-    db.connection.disconnect()
-  })
+  after(() => db.connection.disconnect())
   beforeEach(() => {
     fastify = buildFastify({secret: SECRET, db})
     return fastify.ready()
@@ -38,8 +36,18 @@ describe('server', () => {
     expect(response.body).eql({ hello: 'world' })
   })
 
-  it('can login w valid credentials', async () => {
+  it('can sign-up and login', async () => {
     let response = await supertest(fastify.server)
+      .post('/users')
+      .send({
+        name: 'username',
+        password: 'password',
+        email: 'user@example.com'
+      })
+    expect(response.statusCode).eql(201)
+    expect(response.body).eql({message: 'object created'})
+
+    response = await supertest(fastify.server)
       .post('/login')
       .send({
         username: 'username',
@@ -82,19 +90,6 @@ describe('server', () => {
     expect(response.statusCode).eql(401)
     expect(response.body).eql({
       "error": "invalid username or password",
-      "statusCode": 401
     })
-  })
-
-  it('can sign-up', async () => {
-    const response = await supertest(fastify.server)
-      .post('/users')
-      .send({
-        name: 'username',
-        password: 'password',
-        email: 'user@example.com'
-      })
-    expect(response.statusCode).eql(201)
-    expect(response.body).eql({message: 'object created'})
   })
 })
