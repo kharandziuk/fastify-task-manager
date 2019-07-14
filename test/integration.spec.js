@@ -1,19 +1,35 @@
 const supertest = require('supertest')
 const { expect } = require('chai')
-const buildFastify = require('../index')
+const { buildFastify, dbConnector } = require('../index')
 const jwt = require('jsonwebtoken');
 
 const SECRET = 'secret'
 
+// Makes testing easier
+const cleanModels = (models) => {
+  const promises = Object.values(models).map((model) =>
+    model.deleteMany({})
+  )
+  return Promise.all(promises)
+}
+
 describe('server', () => {
   let fastify
+  let db
+  before(async () => {
+    db = await dbConnector()
+  })
+  after(() => {
+    db.connection.disconnect()
+  })
   beforeEach(() => {
-    fastify = buildFastify({secret: SECRET})
+    fastify = buildFastify({secret: SECRET, db})
     return fastify.ready()
   })
-  afterEach(() =>
-    fastify.close()
-  )
+  afterEach(async () => {
+    await cleanModels(db.models)
+    await fastify.close()
+  })
 
   it('answers hello world', async () => {
     const response = await supertest(fastify.server)
@@ -64,6 +80,21 @@ describe('server', () => {
         password: 'invalid'
       })
     expect(response.statusCode).eql(401)
-    expect(response.error).eql
+    expect(response.body).eql({
+      "error": "invalid username or password",
+      "statusCode": 401
+    })
+  })
+
+  it('can sign-up', async () => {
+    const response = await supertest(fastify.server)
+      .post('/users')
+      .send({
+        name: 'username',
+        password: 'password',
+        email: 'user@example.com'
+      })
+    expect(response.statusCode).eql(201)
+    expect(response.body).eql({message: 'object created'})
   })
 })

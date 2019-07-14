@@ -12,7 +12,7 @@ var joiUserSchema = Joi.object({
 mongoose.connect(
     'mongodb://user:pass@localhost:27017/mydatabase',
     {useNewUrlParser: true}
-);
+).then(() => console.log('-fdfdfdfdf'));
 var db = mongoose.connection;
 mongoose.set('useCreateIndex', true)
 db.on('error', console.error.bind(console, 'connection error:'));
