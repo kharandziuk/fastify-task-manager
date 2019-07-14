@@ -7,6 +7,11 @@
   "author": "Max Kharandziuk <max.kharandziuk@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "fastify": "^2.6.0"
+    "fastify": "^2.6.0",
+    "mocha": "^6.1.4",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
