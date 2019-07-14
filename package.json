@@ -1,0 +1,12 @@
+{
+  "name": "fastify-task-manager",
+  "version": "1.0.0",
+  "description": "A simple task manager written in Node.js to evaluate fastify framework",
+  "main": "index.js",
+  "repository": "git@github.com:kharandziuk/fastify-task-manager.git",
+  "author": "Max Kharandziuk <max.kharandziuk@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^2.6.0"
+  }
+}
