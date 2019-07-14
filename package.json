@@ -8,6 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "fastify": "^2.6.0",
+    "fastify-jwt": "^1.0.0",
     "mocha": "^6.1.4",
     "supertest": "^4.0.2"
   },
