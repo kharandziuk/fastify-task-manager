@@ -1,18 +1,6 @@
 const supertest = require('supertest')
-const Fastify = require('fastify')
 const { expect } = require('chai')
-
-function buildFastify () {
-  const fastify = Fastify()
-
-  fastify.get('/', function (request, reply) {
-    reply.send({ hello: 'world' })
-  })
-
-  return fastify
-}
-
-
+const buildFastify = require('./index')
 
 describe('server', () => {
   let fastify
