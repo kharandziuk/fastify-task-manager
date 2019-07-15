@@ -1,6 +1,8 @@
 const supertest = require('supertest')
 const { expect } = require('chai')
-const { buildFastify, dbConnector } = require('../index')
+const { buildFastify } = require('../index')
+const { dbConnector } = require('../models')
+
 const jwt = require('jsonwebtoken');
 
 const SECRET = 'secret'
@@ -92,8 +94,8 @@ describe('server', () => {
         title: 'some descrition'
       })
 
-    expect(response.body).eql({message: 'object created'})
     expect(response.statusCode).eql(201)
+    expect(response.body).eql({message: 'object created'})
 
     response = await supertest(fastify.server)
       .get('/tasks')
@@ -101,5 +103,8 @@ describe('server', () => {
 
     expect(response.statusCode).eql(200)
     expect(response.body).length(1)
+    const { createdBy } = response.body
+    const user = await db.models.User.findById(createdBy)
+    expect(user).is.not.undefined
   })
 })
