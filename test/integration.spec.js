@@ -40,7 +40,8 @@ describe('server', () => {
         email: 'user@example.com'
       })
     expect(response.statusCode).eql(201)
-    expect(response.body).eql({message: 'object created'})
+    expect(response.body['name']).eql('username')
+    expect(response.body['email']).eql('user@example.com')
 
     response = await supertest(fastify.server)
       .post('/login')
@@ -75,7 +76,8 @@ describe('server', () => {
         email: 'user@example.com'
       })
     expect(response.statusCode).eql(201)
-    expect(response.body).eql({message: 'object created'})
+    expect(response.body['name']).eql('username')
+
 
     response = await supertest(fastify.server)
       .post('/login')
@@ -103,6 +105,7 @@ describe('server', () => {
 
     expect(response.statusCode).eql(200)
     expect(response.body).length(1)
+
     const { createdBy } = response.body
     const user = await db.models.User.findById(createdBy)
     expect(user).is.not.undefined

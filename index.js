@@ -7,6 +7,17 @@ const Joi = require('@hapi/joi')
 const { dbConnector, schemas } = require('./models')
 
 
+const removeKeys = (obj, keysToRemove) => {
+  return Object.keys(obj).filter(key => !keysToRemove.includes(key))
+      .reduce(
+        (acc, key) => {
+          acc[key] = obj[key]
+          return acc
+        },
+        {}
+      )
+}
+
 const userController = async (fastify, { db }) => {
   fastify.post(
     '/users',
@@ -17,8 +28,9 @@ const userController = async (fastify, { db }) => {
       const instance = db.models.User(request.body)
       try {
         await instance.save()
+        const data = removeKeys(instance.toObject(), ['password'])
         reply.code(201)
-        return { message: 'object created' }
+        return data
       } catch (err) {
         if (err.name === 'MongoError' && err.code === 11000) {
           reply.code(400)
