@@ -29,13 +29,6 @@ describe('server', () => {
     await fastify.close()
   })
 
-  it('answers hello world', async () => {
-    const response = await supertest(fastify.server)
-      .get('/')
-    expect(response.statusCode).eql(200)
-    expect(response.body).eql({ hello: 'world' })
-  })
-
   it('can sign-up and login', async () => {
     let response = await supertest(fastify.server)
       .post('/users')
@@ -57,28 +50,6 @@ describe('server', () => {
     expect(response.body).to.have.key('token')
   })
 
-  it('can access with a proper token', async () => {
-    const token = jwt.sign({}, SECRET)
-    response = await supertest(fastify.server)
-      .get('/need-authentication')
-      .set('Authorization', `Bearer ${token}`)
-    expect(response.statusCode).eql(200)
-    expect(response.body).eql({message: 'some personal data'})
-  })
-
-  it('cant access wo a proper token', async () => {
-    const token = 'invalid'
-    response = await supertest(fastify.server)
-      .get('/need-authentication')
-      .set('Authorization', `Bearer ${token}`)
-    expect(response.statusCode).eql(401)
-    expect(response.body).eql({
-      "error": "Unauthorized",
-      "message": "Authorization token is invalid: jwt malformed",
-      "statusCode": 401
-    })
-
-  })
 
   it('cant login wo valid credentials', async () => {
     const response = await supertest(fastify.server)
@@ -91,5 +62,44 @@ describe('server', () => {
     expect(response.body).eql({
       "error": "invalid username or password",
     })
+  })
+
+  it('can create task and find it in a list and remove', async () => {
+    let response = await supertest(fastify.server)
+      .post('/users')
+      .send({
+        name: 'username',
+        password: 'password',
+        email: 'user@example.com'
+      })
+    expect(response.statusCode).eql(201)
+    expect(response.body).eql({message: 'object created'})
+
+    response = await supertest(fastify.server)
+      .post('/login')
+      .send({
+        username: 'username',
+        password: 'password'
+      })
+    expect(response.statusCode).eql(200)
+    const { token } = response.body
+
+    response = await supertest(fastify.server)
+      .post('/tasks')
+      .set('Authorization', `Bearer ${token}`)
+      .send({
+        description: 'some title',
+        title: 'some descrition'
+      })
+
+    expect(response.body).eql({message: 'object created'})
+    expect(response.statusCode).eql(201)
+
+    response = await supertest(fastify.server)
+      .get('/tasks')
+      .set('Authorization', `Bearer ${token}`)
+
+    expect(response.statusCode).eql(200)
+    expect(response.body).length(1)
   })
 })
