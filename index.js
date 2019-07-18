@@ -63,7 +63,9 @@ const taskController = async (fastify, { db }) => {
       preValidation: [fastify.authenticate]
     },
     (request, reply) => {
-      db.models.Task.find({}).lean().then((data) => {
+      const token = request.headers['authorization'].split(' ')[1]
+      const userId = fastify.jwt.decode(token).id
+      db.models.Task.find({createdBy: userId}).lean().then((data) => {
         reply.send(data)
       })
     }
