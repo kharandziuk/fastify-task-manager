@@ -12,7 +12,7 @@
     "fastify-jwt": "^1.0.0",
     "joigoose": "^4.0.8",
     "mocha": "^6.1.4",
-    "mongoose": "^5.6.4",
+    "mongoose": "^5.7.5",
     "supertest": "^4.0.2"
   },
   "scripts": {
