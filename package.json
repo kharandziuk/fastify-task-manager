@@ -8,7 +8,7 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^15.1.0",
-    "fastify": "^2.6.0",
+    "fastify": "^2.15.1",
     "fastify-jwt": "^1.0.0",
     "joigoose": "^4.0.8",
     "mocha": "^6.1.4",
